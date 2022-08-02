@@ -1,0 +1,13 @@
+.git
+.gitattributes
+.gitignore
+.idea
+log/**
+k8s
+tmp/cache
+tmp/sockets
+tmp/pids/**
+tmp/storage/**
+tmp/development_secret.txt
+tmp/restart.txt
+
