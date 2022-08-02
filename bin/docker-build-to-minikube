@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+eval $(kubectl docker-env)
+
+docker build -t excessive .
