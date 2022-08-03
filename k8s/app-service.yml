@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: app
   namespace: excessive
+  name: app
 spec:
   selector:
     app: app

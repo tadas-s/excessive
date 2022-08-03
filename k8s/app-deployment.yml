@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: excessive
   name: app
   labels:
     app: app
@@ -16,6 +17,12 @@ spec:
         - name: app
           image: excessive
           imagePullPolicy: IfNotPresent
+          env:
+            - name: RAILS_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: app
+                  key: rails_env
           ports:
             - containerPort: 3000
               name: http
