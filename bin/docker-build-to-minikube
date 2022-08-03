@@ -4,4 +4,11 @@ set -e
 
 eval $(kubectl docker-env)
 
-docker build -t excessive .
+GIT_COMMIT=$(git rev-parse HEAD)
+
+if [ ! -z "$(git status --porcelain)" ]; then
+  echo "Uncommitted changes present - git sha tag will not represent reality ಠ_ಠ"
+  exit 1
+fi
+
+docker build -t excessive -t excessive:${GIT_COMMIT} .
