@@ -21,7 +21,7 @@ spec:
             - name: RAILS_ENV
               valueFrom:
                 configMapKeyRef:
-                  name: app
+                  name: excessive
                   key: rails_env
           ports:
             - containerPort: 3000

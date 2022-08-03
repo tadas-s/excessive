@@ -2,7 +2,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   namespace: excessive
-  name: app
+  name: excessive
 data:
   rails_env: production
-
