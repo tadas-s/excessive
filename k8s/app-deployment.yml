@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: excessive
+          image: excessive:48ae3b3efffd40f73d3470ceb6b985a7ca316b0f
           imagePullPolicy: IfNotPresent
           env:
             - name: RAILS_ENV
