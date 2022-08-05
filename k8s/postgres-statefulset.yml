@@ -1,11 +1,12 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   namespace: excessive
   name: postgres
   labels:
     app: postgres
 spec:
+  serviceName: postgres
   replicas: 1
   template:
     metadata:
@@ -15,15 +16,22 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: postgres:14.0
-          imagePullPolicy: IfNotPresent
+          image: postgres:14.4
           env:
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: excessive
                   key: postgres_password
+          volumeMounts:
+            - mountPath: "/var/lib/postgresql/data"
+              name: postgres-data
       restartPolicy: Always
+      terminationGracePeriodSeconds: 60
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: postgres
   selector:
     matchLabels:
       app: postgres
