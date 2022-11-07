@@ -2,6 +2,8 @@
 
 set -e
 
+echo "Entrypoint args: '${*}'"
+
 case $1 in
   "console")
     bundle exec rails console
@@ -11,6 +13,6 @@ case $1 in
     ;;
   *)
     # Otherwise just shell exec the whole thing
-    sh -c "${*}"
+    bash -c "${*}"
     ;;
 esac
