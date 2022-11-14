@@ -23,6 +23,7 @@ services:
       - postgres
     build:
       context: .
+      target: development
     init: true
     volumes:
       - tmp-cache:/app/tmp/cache
